@@ -1,7 +1,7 @@
 # 🌐 FlowNet - Network Packet Routing Simulator
 
 ## 🚀 Overview
-NetRouteX is a Java-based network packet routing simulator that models how data packets travel across a network using routers and hosts. The system uses graph-based topology and Dijkstra’s shortest path algorithm to simulate real-world routing behavior.
+FlowNet is a Java-based network packet routing simulator that models how data packets travel across a network using routers and hosts. The system uses graph-based topology and Dijkstra’s shortest path algorithm to simulate real-world routing behavior.
 
 The project also includes a web-based user interface to visualize simulation logs and interact with the backend.
 
