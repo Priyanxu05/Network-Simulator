@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Network Simulator</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div class="container">
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <h2>Controls</h2>
+        <button onclick="runSimulation()">Run</button>
+        <button onclick="downRouter()">R2 DOWN</button>
+        <button onclick="upRouter()">R2 UP</button>
+    </div>
+
+    <!-- Network Area -->
+    <div class="network">
+
+        <div class="node host" style="left:50px; top:200px;">H1</div>
+        <div class="node router" style="left:200px; top:200px;">R1</div>
+        <div class="node router" style="left:350px; top:200px;">R2</div>
+        <div class="node router" style="left:500px; top:200px;">R3</div>
+        <div class="node host" style="left:650px; top:200px;">H2</div>
+
+    </div>
+
+</div>
+
+<!-- Logs -->
+<div class="logs">
+    <h3>Logs</h3>
+    <pre id="output">Waiting...</pre>
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>
