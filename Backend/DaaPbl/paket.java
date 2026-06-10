@@ -8,8 +8,11 @@ public class paket {
     private String data;
     private int time;
     private List<String> path;
+    private static int counter = 1;
+    private int packetId;
 
     public paket(String source,String dest,String data,int time) {
+    this.packetId = counter++;
     this.source=source;
     this.dest=dest;
     this.data=data;
@@ -20,6 +23,9 @@ public class paket {
     public void timedecrement(){
     time--;
 }
+    public int getPacketId() {
+    return packetId;
+    }
 
     public boolean expire(){
     return time<=0;
