@@ -17,6 +17,10 @@ public class router extends Node{
         login.error("Router " +id +" is DOWN");
     }
 
+    public void clearRoutingTable(){
+    routingtable.clear();
+}
+
     public void enable(){
         active=true;
         login.success("Router " + id + " is UP");
@@ -38,6 +42,7 @@ public class router extends Node{
 
         pkt.addpkt(id);
         pkt.timedecrement();
+        login.info("TTL Updated: " + pkt.gettime());
 
         if(pkt.expire()){
             login.error("Packet DROPPED at " +id+ " (TTL expired)");
@@ -54,17 +59,22 @@ public class router extends Node{
                 n.receivepak(pkt);
                 return;
             }}
+        login.info("Packet added to queue at " + id);
         paketque.add(pkt);
         processQueue();
     }
 
     private void processQueue(){
         while (!paketque.isEmpty()){
+
+            login.info("Processing packet queue at " + id);
             paket pkt=paketque.poll();
             forwardpkt(pkt);
         } }
+        public boolean isActive() {
+            return active;}
 
-    private void forwardpkt(paket pkt){
+        private void forwardpkt(paket pkt){
         String dest = pkt.getdest();
         if (routingtable.containsKey(dest)){
             Node nextnode=routingtable.get(dest);
@@ -79,4 +89,11 @@ public class router extends Node{
     public void sendpak(paket pkt){
         receivepak(pkt);
     }
+
+    public void showRoutingTable(){
+        login.header("Routing Table - " + id);
+        for(String dest : routingtable.keySet()) {
+            
+        Node next=routingtable.get(dest);
+        login.info(dest + " -> " + next.getid());}}
 }
