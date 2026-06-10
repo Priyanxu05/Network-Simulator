@@ -15,7 +15,7 @@ public class host extends Node {
         login.info("MESSAGE RECEIVED");
         login.info("Data: " +pkt.getdata());
 
-        login.success("FINAL PATH: "+String.join("->", pkt.getPath()));
+        login.success("FINAL PATH: "+String.join(" -> ", pkt.getPath()));
         login.line();
     }
 
