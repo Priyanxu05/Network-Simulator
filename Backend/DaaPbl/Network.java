@@ -18,6 +18,17 @@ public class Network{
         adjlist.get(n2).add(new Link(n2,n1, cost));
     }
 
+    public void showTopology() {
+    login.header("NETWORK TOPOLOGY");
+    for (Node node : adjlist.keySet()) {
+        for (Link link : adjlist.get(node)) {
+            login.info(
+                link.getFrom().getid()+ " -> "+ link.getTo().getid() + " (Cost: "+ link.getCost()+ ")");
+        }
+    }
+}
+
+
     public List<Node> getneighbors(Node node) {
         List<Node>neighbors=new ArrayList<>();
         for (Link l : adjlist.get(node)){
