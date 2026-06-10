@@ -16,19 +16,25 @@ public class Dijkstra {
         pq.add(source);
         while(!pq.isEmpty()) {
             Node current =pq.poll();
+            login.info("Visiting node: " + current.getid());
 
             if(current==destination) 
                 break;
 
-            for(Node neighbor : graph.getneighbors(current)){
-                int newDist =dist.get(current)+1;
-
-                if(newDist < dist.get(neighbor)){
-                    dist.put(neighbor,newDist);
-                    prev.put(neighbor,current);
-                    pq.add(neighbor);
-                }
-            }
+            for (Node neighbor : graph.getneighbors(current)) {
+                if (neighbor instanceof router) {
+                     router r = (router) neighbor;
+                    if (!r.isActive())
+                        continue; }
+                    
+                int newDist=dist.get(current)+graph.getCost(current,neighbor);
+                if (newDist<dist.get(neighbor)){
+                login.info("Updating path: "+ current.getid()+ " -> "+ neighbor.getid());
+                dist.put(neighbor,newDist);
+                prev.put(neighbor,current);
+                pq.add(neighbor);
+    }
+}
         }
         List<Node> path=new ArrayList<>();
         Node curr=destination;
